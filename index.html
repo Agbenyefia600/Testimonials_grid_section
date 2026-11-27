@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png">
+  <title>Testimonials Grid Section</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --violet: hsl(263, 55%, 52%);
+      --grayish-blue: hsl(217, 19%, 35%);
+      --blackish-blue: hsl(219, 29%, 14%);
+      --white: hsl(0, 0%, 100%);
+      --light-gray: hsl(0, 0%, 81%);
+      --light-grayish-blue: hsl(210, 46%, 95%);
+      --bg: hsl(0, 0%, 96%);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      font-family: "Barlow Semi Condensed", sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      padding: 4.5rem 1.5rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 327px;
+    }
+
+    .card {
+      position: relative;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 40px 60px 50px -47px rgba(72, 85, 106, 0.25);
+      overflow: hidden;
+    }
+
+    .card header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--light-gray);
+    }
+
+    .name { font-size: 13px; line-height: 1.3; }
+    .status { font-size: 11px; opacity: 0.5; line-height: 1.3; }
+
+    .card h2 {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card p.quote {
+      line-height: 1.4;
+      opacity: 0.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Card colours */
+    .daniel   { background: var(--violet); color: var(--white); }
+    .daniel::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 1.5rem;
+      width: 104px;
+      height: 102px;
+      background: url("images/bg-pattern-quotation.svg") no-repeat;
+    }
+    .daniel img   { border: 2px solid hsl(264, 82%, 80%); }
+
+    .jonathan { background: var(--grayish-blue); color: var(--white); }
+
+    .jeanette, .kira { background: var(--white); color: var(--grayish-blue); }
+    .jeanette .name, .kira .name { color: var(--grayish-blue); }
+
+    .patrick  { background: var(--blackish-blue); color: var(--light-grayish-blue); }
+    .patrick img { border: 2px solid var(--violet); }
+
+    /* Tablet: two columns */
+    @media (min-width: 640px) {
+      .grid {
+        max-width: 700px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .daniel, .patrick { grid-column: span 2; }
+    }
+
+    /* Desktop: the full mosaic */
+    @media (min-width: 1024px) {
+      body { padding: 2rem; }
+      .grid {
+        max-width: 1110px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto auto;
+        gap: 1.9rem;
+      }
+      .daniel   { grid-column: 1 / 3; grid-row: 1; }
+      .daniel::before { right: 3.75rem; }
+      .jonathan { grid-column: 3 / 4; grid-row: 1; }
+      .jeanette { grid-column: 1 / 2; grid-row: 2; }
+      .patrick  { grid-column: 2 / 4; grid-row: 2; }
+      .kira     { grid-column: 4 / 5; grid-row: 1 / 3; }
+    }
+  </style>
+</head>
+<body>
+  <main class="grid">
+    <article class="card daniel">
+      <header>
+        <img src="images/image-daniel.jpg" alt="Daniel Clifford">
+        <div>
+          <p class="name">Daniel Clifford</p>
+          <p class="status">Verified Graduate</p>
+        </div>
+      </header>
+      <h2>I received a job offer mid-course, and the subjects I learned were current, if not more so, in the company I joined. I honestly feel I got every penny’s worth.</h2>
+      <p class="quote">“ I was an EMT for many years before I joined the bootcamp. I’ve been looking to make a transition and have heard some people who had an amazing experience here. I signed up for the free intro course and found it incredibly fun! I enrolled shortly thereafter. The next 12 weeks was the best - and most grueling - time of my life. Since completing the course, I’ve successfully switched careers, working as a Software Engineer at a VR startup. ”</p>
+    </article>
+
+    <article class="card jonathan">
+      <header>
+        <img src="images/image-jonathan.jpg" alt="Jonathan Walters">
+        <div>
+          <p class="name">Jonathan Walters</p>
+          <p class="status">Verified Graduate</p>
+        </div>
+      </header>
+      <h2>The team was very supportive and kept me motivated</h2>
+      <p class="quote">“ I started as a total newbie with virtually no coding skills. I now work as a mobile engineer for a big company. This was one of the best investments I’ve made in myself. ”</p>
+    </article>
+
+    <article class="card jeanette">
+      <header>
+        <img src="images/image-jeanette.jpg" alt="Jeanette Harmon">
+        <div>
+          <p class="name">Jeanette Harmon</p>
+          <p class="status">Verified Graduate</p>
+        </div>
+      </header>
+      <h2>An overall wonderful and rewarding experience</h2>
+      <p class="quote">“ Thank you for the wonderful experience! I now have a job I really enjoy, and make a good living while doing something I love. ”</p>
+    </article>
+
+    <article class="card patrick">
+      <header>
+        <img src="images/image-patrick.jpg" alt="Patrick Abrams">
+        <div>
+          <p class="name">Patrick Abrams</p>
+          <p class="status">Verified Graduate</p>
+        </div>
+      </header>
+      <h2>Awesome teaching support from TAs who did the bootcamp themselves. Getting guidance from them and learning from their experiences was easy.</h2>
+      <p class="quote">“ The staff seem genuinely concerned about my progress which I find really refreshing. The program gave me the confidence necessary to be able to go out in the world and present myself as a capable junior developer. The standard is above the rest. You will get the personal attention you need from an incredible community of smart and amazing people. ”</p>
+    </article>
+
+    <article class="card kira">
+      <header>
+        <img src="images/image-kira.jpg" alt="Kira Whittle">
+        <div>
+          <p class="name">Kira Whittle</p>
+          <p class="status">Verified Graduate</p>
+        </div>
+      </header>
+      <h2>Such a life-changing experience. Highly recommended!</h2>
+      <p class="quote">“ Before joining the bootcamp, I’ve never written a line of code. I needed some structure from professionals who can help me learn programming step by step. I was encouraged to enroll by a former student of theirs who can only say wonderful things about the program. The entire curriculum and staff did not disappoint. They were very hands-on and I never had to wait long for assistance. The agile team project, in particular, was outstanding. It took my learning to the next level in a way that no tutorial could ever have. In fact, I’ve often referred to it during interviews as an example of my development experience. It certainly helped me land a job as a full-stack developer after receiving multiple offers. 100% recommend! ”</p>
+    </article>
+  </main>
+</body>
+</html>
